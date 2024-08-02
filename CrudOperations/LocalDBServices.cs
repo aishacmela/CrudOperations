@@ -28,9 +28,24 @@ namespace CrudOperations
         {
             return await _connection.Table<Contact>().ToListAsync();
         }
+        public async Task<Contact> GetById(int id)
+        {
+            return await _connection.Table<Contact>().Where(x => x.Id == id).FirstOrDefaultAsync();
+        }
+
         public async Task Create(Contact contact)
         {
-            return await _connection.InsertAllAsync(contact);
+            await _connection.InsertAsync(contact);
+        }
+
+        public async Task Update(Contact contact)
+        {
+            await _connection.UpdateAsync(contact);
+        }
+
+        public async Task Delete(Contact contact)
+        {
+            await _connection.DeleteAsync(contact);
         }
     }
 }

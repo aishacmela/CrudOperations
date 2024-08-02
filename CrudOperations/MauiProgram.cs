@@ -15,6 +15,7 @@ namespace CrudOperations
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            builder.Services.AddSingleton<LocalDBServices>();
             builder.Services.AddTransient<MainPage>();
 
 #if DEBUG
